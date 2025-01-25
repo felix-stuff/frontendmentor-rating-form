@@ -10,6 +10,7 @@ This is a solution to the [Interactive rating component challenge on Frontend Me
 ### Built with
 
 - Semantic markup
+- Improved accessibility 
 - CSS custom properties
 - Flexbox
 - Mobile-first workflow
