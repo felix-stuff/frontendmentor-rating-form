@@ -7,9 +7,10 @@
 }
 
 :root {
-    --colorPrimary: hsl(25, 97%, 53%);
-    --colorSecondary-700: hsl(213, 19%, 18%);
-    --colorNeutral-500: hsl(216, 12%, 54%);
+    --darkBlue: #262E38;
+    --lightGrey: #969FAD;
+    --orange: #FC7614;
+    --veryDarkBlue: #131518;
 }
 
 html {
@@ -18,7 +19,7 @@ html {
 
 body {
     font-family: 'Overpass', sans-serif;
-    background-color: #141519;
+    background-color: var(--veryDarkBlue);
 }
 
 main {
@@ -27,11 +28,22 @@ main {
     min-height: 100vh;
 }
 
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
 .card {
-    background: linear-gradient(0deg, #171e28 30%, #212833 100%);
-    padding: 2rem 1.5rem 2.25rem;
-    border-radius: 1rem;
-    width: 22rem;
+    background: radial-gradient(circle at center, #232A34 0, #181E27 100%);
+    padding: 1.5rem 1.5rem 2rem;
+    border-radius: 0.9375rem;
     margin: auto;
 }
 
@@ -40,32 +52,38 @@ main {
 }
 
 .card .circle-background {
-    background-color: #262f38;
-    width: 2.5rem;
-    height: 2.5rem;
+    background-color: var(--darkBlue);
+    width: 2.625rem;
+    height: 2.625rem;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    color: var(--colorNeutral-500);
+    color: var(--lightGrey);
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 1;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.card h1 {
+.card .headline {
     color: #fff;
     font-size: 1.5rem;
-    font-weight: 400;
+    font-weight: 700;
     margin: 1rem 0;
 }
 
-.card p {
-    font-size: 0.9375rem;
-    color: var(--colorNeutral-500);
-    line-height: 1.5;
+.card .text-content {
+    font-size: 0.875rem;
+    color: var(--lightGrey);
+    line-height: 1.375rem;
     display: block;
+    max-width: 31ch;
 }
 
 .rating-form fieldset {
     display: flex;
+    color: var(--lightGrey);
     align-items: center;
     justify-content: space-between;
     border: 0;
@@ -73,90 +91,117 @@ main {
 }
 
 .rating-form input[type="radio"] {
-    appearance: none;
-    -moz-appearance: none;
     -webkit-appearance: none;
-    display: none;
+    appearance: none;
+    background-color: #fff;
 }
 
-.rating-form input[type="radio"]:checked + label {
-    background-color: var(--colorNeutral-500);
-    color: #fff;
+input[type="radio"]:focus + .circle-background {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
 }
 
-.rating-form input[type="radio"] + label {
+.rating-form input[type="radio"]:checked + .circle-background {
+    background-color: #fff;
+    color: var(--darkBlue);
+}
+
+.rating-form input[type="radio"] + .circle-background {
     cursor: pointer;
-    line-height: 1;
-    font-size: 14px;
-	padding: 1.25rem 1rem 1rem;
 }
 
-.rating-form label:hover {
-    background-color: var(--colorPrimary);
-    color: #fff;
+.rating-form .circle-background:hover {
+    background-color: var(--orange);
+    color: var(--darkBlue);
 }
 
 .rating-form .button-submit {
-    background-color: var(--colorPrimary);
-    padding: 1rem;
+    background-color: var(--orange);
+    padding: 0.875rem;
     border-radius: 9999px;
     width: 100%;
     display: block;
-    color: #fff;
-    font-weight: 400;
+    color: var(--veryDarkBlue);
+    font-size: 0.875rem;
+    font-weight: 700;
     border: 0;
     letter-spacing: 2px;
     text-transform: uppercase;
     cursor: pointer;
+    transition: 0.3s ease;
 }
 
 .rating-form .button-submit:hover {
     background-color: #fff;
-    color: var(--colorPrimary);
 }
 
-.rating-pill {
-    color: var(--colorPrimary);
-    padding: 0.65rem 1rem 0.4rem;
+.rating-form .button-submit:focus {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+}
+
+.card-success .image-success {
+    display: block;
+    max-width: 100%;
+    height: 6rem;
+    margin: 0.5rem auto 0;
+}
+
+.card-success .rating-pill {
+    color: var(--orange);
+    padding: 0.25rem 0.75rem;
     border-radius: 9999px;
-    line-height: 1.1;
-    background-color: var(--colorSecondary-700);
-    margin: 1rem 0;
+    background-color: var(--darkBlue);
+    border: 1px solid var(--darkBlue);
     font-size: 0.875rem;
-    display: inline-block;
+    line-height: 1.375rem;
+    display: flex;
+    gap: 0.15rem;
+    align-items: center;
+    justify-content: center;
+    max-width: fit-content;
+    margin: 1.5rem auto;
 }
 
 @media screen and (min-width: 48em) {
     .card {
-        width: 25rem;
-        padding: 2rem;
-        border-radius: 2rem;
+        padding: 2rem 2.5rem 2rem 2rem;
+        border-radius: 1.875rem;
     }
 
-    .card h1 {
+    .card .headline {
         font-size: 1.75rem;
-        margin: 1rem 0 0.75rem;
+        margin: 1rem 0 0.5rem;
+    }
+
+    .card .text-content {
+        max-width: 21.25rem;
+        font-size: 0.9375rem;
+        line-height: 1.5rem;
+        margin-bottom: 1.5rem;
     }
 
     .card .circle-background + h1 {
         margin-top: 2rem;
     }
 
-    .card img {
-        display: inline-block;
-        margin: 1rem 0;
+    .card .image-success {
+        height: 6.75rem;
+        margin: 0.75rem auto;
     }
-    
+
     .card .circle-background {
-        width: 3rem;
-        height: 3rem;
+        width: 3.25rem;
+        height: 3.25rem;
+        font-size: 1rem;
     }
 
     .rating-form .button-submit {
         margin-top: 2rem;
+        font-size: 0.9375rem;
     }
 
-    .card p {
-        margin-bottom: 1.5rem;
+    .card-success .rating-pill {
+        margin: 2rem auto;
     }
 }
