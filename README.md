@@ -4,12 +4,12 @@ This is a solution to the [Interactive rating component challenge on Frontend Me
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- [Solution URL](https://www.frontendmentor.io/challenges/interactive-rating-component-koxpeBUmI)
+- [Live Site URL](https://felix-stuff.github.io/frontendmentor-rating-form/)
 
 ### Built with
 
-- Semantic HTML5 markup
+- Semantic markup
 - CSS custom properties
 - Flexbox
 - Mobile-first workflow
